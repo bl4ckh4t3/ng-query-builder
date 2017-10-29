@@ -1,0 +1,90 @@
+.search-condition {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    -webkit-touch-callout: none;
+    -khtml-user-select: text;
+}
+
+.condition select {
+    width: auto;
+}
+
+.group {
+    display: inline-block;
+}
+
+.group > div, .conditions > div {
+    float: left;
+}
+
+.condition .ui-select-toggle i.caret.pull-right {
+    float: none !important;
+    position: static;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+.condition .form-control {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    width: auto;
+    /* 	padding: 6px 4px; */
+    padding: 10px 5px;
+    height: 35px;
+    font-size: 13px;
+    line-height: 1;
+}
+
+.condition input.form-control{
+    min-width: 40px;
+}
+
+.condition-element .btn, .condition-element .btn-default {
+    background: white !important;
+}
+
+.condition-element {
+    float: left;
+}
+
+.condition-element > * {
+    float: left;
+}
+
+.condition .form-control:focus, .condition .btn-default-focus {
+    border: none;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.no-border {
+    background-color: #fff;
+}
+
+.no-border * {
+    border-radius: 0;
+    border: none;
+}
+
+.condition .brackets {
+
+}
+
+.condition .brackets .fa {
+    font-size: 10px;
+    vertical-align: bottom;
+}
+
+.condition-wrapper * {
+    padding: 2px;
+}

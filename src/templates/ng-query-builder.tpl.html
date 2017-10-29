@@ -1,0 +1,14 @@
+<div>
+    <ng-query-builder-content class="condition" data-fields="$ctrl.fields"
+                              data-group="$ctrl.start"></ng-query-builder-content>
+    <p class="text-right">
+        <button class="btn btn-info btn-sm" type="button" ng-click="$ctrl.search();">
+            <span>{{'search'|translate}}</span>
+        </button>
+        <button class="btn btn-default btn-sm" type="button" ng-click="$ctrl.clear();">
+            <span>{{'cancel'|translate}}</span>
+        </button>
+    </p>
+
+    <pre>{{$ctrl.query}}</pre>
+</div>

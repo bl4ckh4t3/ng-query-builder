@@ -1,0 +1,78 @@
+<div class="group">
+
+    <div class="form-control input-sm  brackets">
+        <span>(</span>
+    </div>
+
+    <div class="conditions">
+        <div ng-repeat-start="rule in $ctrl.group.rules"></div>
+
+        <div class="condition-element">
+            <select class="form-control" ng-if="rule.type" ng-model="rule.type"
+                    ng-options="item for item in $ctrl.conditions"></select>
+        </div>
+
+        <div class="form-control input-sm ">
+            <span class="glyphicon glyphicon-menu-left"></span>
+            <a style="cursor: pointer;" ng-if="$ctrl.group.rules.length>1" ng-click="$ctrl.removeCondition($index)">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+        <div class="condition-element">
+            <select class="form-control" autofocus ng-change="$ctrl.selectedField(rule);" ng-model="rule.field">
+                <option value="">Select field</option>
+                <option ng-repeat="field in $ctrl.fields track by $index" ng-value="field">{{field}}</option>
+            </select>
+        </div>
+        <div class="condition-element">
+            <select class="form-control" ng-model="rule.operator">
+                <option ng-repeat="operator in $ctrl.operators" ng-value="operator">{{operator.type}}</option>
+            </select>
+
+            <input ng-repeat="index in $ctrl.getRuleParams(rule) track by $index"
+                   type="text" ng-model="rule.value[$index]" class="form-control input-sm"/>
+
+            <!--<select ng-repeat="index in [] | range:rule.operator.accept_values"
+                       ng-if="$root.ENUMS | map:'key'" ng-model="rule.value[index]"
+                ng-options="column as column.value for column in $root.ENUMS | filter:{key:rule.field}:true | pick:'value!=null' | propsFilter:{value:$select.search} track by column.id">
+            </select>-->
+
+        </div>
+
+        <div class="form-control input-sm">
+            <span class="glyphicon glyphicon-menu-right"></span>
+        </div>
+
+        <div ng-repeat-end></div>
+
+    </div>
+
+    <div ng-repeat="kid in $ctrl.group.children track by $index" class="group">
+        <div class="condition-element">
+            <select ng-model="kid.condition" class="form-control"
+                    ng-options="item for item in $ctrl.conditions">
+            </select>
+        </div>
+        <ng-query-builder-content data-fields="$ctrl.fields" data-group="kid"
+                                  data-parent="$ctrl.group"></ng-query-builder-content>
+    </div>
+
+    <div class="form-control input-sm  brackets" uib-dropdown="">
+        <span>)</span>
+
+        <a style="cursor: pointer;" aria-haspopup="true" aria-expanded="false" uib-dropdown-toggle="">
+            <i class="caret"></i>
+        </a>
+        <ul class="dropdown-menu" role="menu" uib-dropdown-menu="">
+            <li>
+                <a ng-click="$ctrl.addRule()" data-translate>add_condition</a>
+            </li>
+            <li>
+                <a ng-click="$ctrl.addGroup()" data-translate>add_group</a>
+            </li>
+            <li>
+                <a ng-click="$ctrl.removeGroup(index);" data-translate>remove_group</a>
+            </li>
+        </ul>
+    </div>
+</div>

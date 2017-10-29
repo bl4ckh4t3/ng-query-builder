@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NgQueryBuilder Examples</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="ng-query-builder.min.css">
+</head>
+<body ng-app="TestApp" ng-controller="test as test">
+
+<style>
+    .test {
+        background: #eaeaea;
+        padding: 10px;
+    }
+</style>
+<div class="test">
+    <ng-query-builder data-fields="test.fields" data-debug="true"
+                      data-on-search="test.change(query)"></ng-query-builder>
+</div>
+
+{{query}}
+-
+{{test.pippo}}
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+<script type="text/javascript" src="angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+<script type="text/javascript" src="ng-query-builder.min.js"></script>
+<script>
+    angular.module('TestApp', ['ui.bootstrap', 'ng-query-builder'])
+        .controller('test', function () {
+            this.fields = [
+                "one",
+                "two",
+                "tre"
+            ];
+            this.change = change.bind(this);
+
+            function change(query) {
+                this.pippo = query;
+            }
+        });
+</script>
+</body>
+</html>
